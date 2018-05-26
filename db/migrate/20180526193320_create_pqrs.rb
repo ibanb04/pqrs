@@ -9,7 +9,7 @@ class CreatePqrs < ActiveRecord::Migration[5.2]
       t.text :description
       t.date :date
       t.datetime :response_date
-      t.references :file, foreign_key: true
+      t.references :doc, foreign_key: true
 
       t.timestamps
     end

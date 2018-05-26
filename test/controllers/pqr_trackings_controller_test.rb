@@ -17,7 +17,7 @@ class PqrTrackingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pqr_tracking" do
     assert_difference('PqrTracking.count') do
-      post pqr_trackings_url, params: { pqr_tracking: { date: @pqr_tracking.date, department_id: @pqr_tracking.department_id, pqr_id: @pqr_tracking.pqr_id, response: @pqr_tracking.response, review: @pqr_tracking.review, status_id: @pqr_tracking.status_id, user_id: @pqr_tracking.user_id } }
+      post pqr_trackings_url, params: { pqr_tracking: { actual_user_id: @pqr_tracking.actual_user_id, date: @pqr_tracking.date, department_id: @pqr_tracking.department_id, dest_user_id: @pqr_tracking.dest_user_id, pqr_id: @pqr_tracking.pqr_id, response: @pqr_tracking.response, review: @pqr_tracking.review, status_id: @pqr_tracking.status_id } }
     end
 
     assert_redirected_to pqr_tracking_url(PqrTracking.last)
@@ -34,7 +34,7 @@ class PqrTrackingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update pqr_tracking" do
-    patch pqr_tracking_url(@pqr_tracking), params: { pqr_tracking: { date: @pqr_tracking.date, department_id: @pqr_tracking.department_id, pqr_id: @pqr_tracking.pqr_id, response: @pqr_tracking.response, review: @pqr_tracking.review, status_id: @pqr_tracking.status_id, user_id: @pqr_tracking.user_id } }
+    patch pqr_tracking_url(@pqr_tracking), params: { pqr_tracking: { actual_user_id: @pqr_tracking.actual_user_id, date: @pqr_tracking.date, department_id: @pqr_tracking.department_id, dest_user_id: @pqr_tracking.dest_user_id, pqr_id: @pqr_tracking.pqr_id, response: @pqr_tracking.response, review: @pqr_tracking.review, status_id: @pqr_tracking.status_id } }
     assert_redirected_to pqr_tracking_url(@pqr_tracking)
   end
 

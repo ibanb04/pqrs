@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  has_and_belongs_to_many :pqr_trackings
   belongs_to :department
   belongs_to :role
+  has_many :actualTrackings, :class_name => 'PqrTracking', :foreign_key => 'actual_user_id'
+  has_many :destTrackings, :class_name => 'PqrTracking', :foreign_key => 'dest_user_id'
+
 end

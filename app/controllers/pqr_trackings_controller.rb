@@ -69,6 +69,6 @@ class PqrTrackingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pqr_tracking_params
-      params.require(:pqr_tracking).permit(:pqr_id, :user_id, :status_id, :department_id, :date, :review, :response)
+      params.require(:pqr_tracking).permit(:pqr_id, :actual_user_id, :dest_user_id, :status_id, :department_id, :date, :review, :response)
     end
 end

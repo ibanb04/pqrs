@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :logs
   resources :pqr_trackings
   resources :statuses
   resources :pqrs

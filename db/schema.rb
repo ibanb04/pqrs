@@ -10,53 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_201532) do
+ActiveRecord::Schema.define(version: 2018_05_26_232754) do
 
-  create_table "departments", force: :cascade do |t|
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "docs", force: :cascade do |t|
+  create_table "docs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "permission_roles", id: false, force: :cascade do |t|
-    t.integer "permission_id"
-    t.integer "role_id"
+  create_table "logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "action"
+    t.datetime "date"
+    t.string "table"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permission_roles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "permission_id", null: false
+    t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["permission_id"], name: "index_permission_roles_on_permission_id"
     t.index ["role_id"], name: "index_permission_roles_on_role_id"
   end
 
-  create_table "permissions", force: :cascade do |t|
+  create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pqr_trackings", id: false, force: :cascade do |t|
-    t.integer "pqr_id"
-    t.integer "user_id"
-    t.integer "status_id"
-    t.integer "department_id"
-    t.datetime "date"
+  create_table "pqr_trackings", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "pqr_id", null: false
+    t.bigint "actual_user_id", null: false
+    t.bigint "dest_user_id", null: false
+    t.bigint "status_id", null: false
+    t.bigint "department_id"
+    t.datetime "date", null: false
     t.string "review"
     t.string "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["actual_user_id"], name: "index_pqr_trackings_on_actual_user_id"
     t.index ["department_id"], name: "index_pqr_trackings_on_department_id"
+    t.index ["dest_user_id"], name: "index_pqr_trackings_on_dest_user_id"
     t.index ["pqr_id"], name: "index_pqr_trackings_on_pqr_id"
     t.index ["status_id"], name: "index_pqr_trackings_on_status_id"
-    t.index ["user_id"], name: "index_pqr_trackings_on_user_id"
   end
 
-  create_table "pqrs", force: :cascade do |t|
+  create_table "pqrs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -65,26 +75,26 @@ ActiveRecord::Schema.define(version: 2018_05_26_201532) do
     t.text "description"
     t.date "date"
     t.datetime "response_date"
-    t.integer "file_id"
+    t.bigint "doc_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["file_id"], name: "index_pqrs_on_file_id"
+    t.index ["doc_id"], name: "index_pqrs_on_doc_id"
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "statuses", force: :cascade do |t|
+  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -101,12 +111,22 @@ ActiveRecord::Schema.define(version: 2018_05_26_201532) do
     t.string "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role_id"
-    t.integer "department_id"
+    t.bigint "role_id", null: false
+    t.bigint "department_id", null: false
     t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "permission_roles", "permissions"
+  add_foreign_key "permission_roles", "roles"
+  add_foreign_key "pqr_trackings", "departments"
+  add_foreign_key "pqr_trackings", "pqrs"
+  add_foreign_key "pqr_trackings", "statuses"
+  add_foreign_key "pqr_trackings", "users", column: "actual_user_id"
+  add_foreign_key "pqr_trackings", "users", column: "dest_user_id"
+  add_foreign_key "pqrs", "docs"
+  add_foreign_key "users", "departments"
+  add_foreign_key "users", "roles"
 end
