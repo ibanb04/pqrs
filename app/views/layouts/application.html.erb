@@ -17,15 +17,14 @@
         
       </ul>
       <nav>
-        <div class="nav-wrapper blue">
-          <a href="#!" class="brand-logo">Logo</a>
+        <div class="nav-wrapper blue">          
           <ul class="right hide-on-med-and-down">
             <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
-            <li><%= current_user.first_name %></li>
+            <li><a href="#"><%= current_user.first_name %></a></li>
           </ul>
         </div>
       </nav>     
-    <% end %>
+    <% end %> 
 
     </header>
     <p class="notice"><%= notice %></p>
