@@ -1,29 +1,90 @@
-<h2>Sign up</h2>
+<section class="valign-wrapper">
+
+<div class="container">
+  <div class="row">
+    <div class="col s12  m12 l11">
+      
+      <div class="card hoverable" style="background-color: rgba(255,255,255,.15);" id="card-login">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="card-content grey lighten-4">
+  <div class="center-align ">
+     <span class="card-title">Registrarse</span>
   </div>
+  <br>
+ <div class="row">
+      <div class="field col s6 validate">
+        <%= f.label :first_name %><br/>
+        <%= f.text_field :first_name, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <div class="field col s6 validate">
+        <%= f.label :last_name %><br/>
+        <%= f.text_field :last_name, autofocus: true %>
+      </div>
+ </div> 
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+ <div class="row">
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="input-field col s6">
+      <%= f.label :email %><br/>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="input-field col s6 ">
+      <%= f.label :phone %><br/>
+      <%= f.text_field :phone, autofocus: true %>
+    </div>
+ </div>
+
+ <div class="row">
+
+    <div class="input-field col s12">
+    <%= f.select "department_id", Department.all.collect {|x| [x.name, x.id]},{}, class: "multiple"%>
+    </div>
+    <div class="input-field col s12">
+      <%= f.select "role_id", Role.all.collect {|x| [x.name, x.id]},{}, class: "multiple"%>
+      </div>
+
+ </div>    
+ <div class="row">
+    <div class="input-field col s12 l7 ">
+        <%= f.label :birthday %><br/>
+        <%= f.text_field :birthday, autofocus: true %>
+    </div>
+ </div>
+    <div class="input-field">
+      <%= f.label :password %>
+      <br>
+      <% if @minimum_password_length %>
+      <br>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br/>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="input-field">
+      <%= f.label :password_confirmation %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        
+      <span>Ya tienes una cuenta? </span>
+  <%= render "devise/shared/links" %>
+      </div>
+    </div>
+</div>
+
+    <div class="actions card-action center-align ">
+      <%= f.submit "Enviar",class:'btn btn-large waves-effect waves-light blue hoverable pulse ' %>
+    </div>
+    
+  <% end %>
+
+          </div>
+       </div>
+    </div>
+</div>
+</section>

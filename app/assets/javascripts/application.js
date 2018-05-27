@@ -11,7 +11,20 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery3
+//= require jquery_ujs
 //= require materialize-sprockets
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//document.addEventListener('DOMContentLoaded', function() {
+//    var elems = document.querySelectorAll('select');
+//    var instances = M.FormSelect.init(elems, options);
+//  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+    $(".dropdown-trigger").dropdown();
+  });
