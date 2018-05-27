@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_190836) do
+ActiveRecord::Schema.define(version: 2018_05_26_201532) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "docs", force: :cascade do |t|
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,9 +40,46 @@ ActiveRecord::Schema.define(version: 2018_05_26_190836) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pqr_trackings", id: false, force: :cascade do |t|
+    t.integer "pqr_id"
+    t.integer "user_id"
+    t.integer "status_id"
+    t.integer "department_id"
+    t.datetime "date"
+    t.string "review"
+    t.string "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_pqr_trackings_on_department_id"
+    t.index ["pqr_id"], name: "index_pqr_trackings_on_pqr_id"
+    t.index ["status_id"], name: "index_pqr_trackings_on_status_id"
+    t.index ["user_id"], name: "index_pqr_trackings_on_user_id"
+  end
+
+  create_table "pqrs", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "title"
+    t.string "subject"
+    t.text "description"
+    t.date "date"
+    t.datetime "response_date"
+    t.integer "file_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["file_id"], name: "index_pqrs_on_file_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "status_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
