@@ -48,12 +48,12 @@
 
   <div class="field">
     <%= form.label :response_date %>
-    <%= form.datetime_select :response_date %>
+    <%= form.date_select :response_date, class:'datepicker' %>
   </div>
 
   <div class="field">
-    <%= form.label :file_id %>
-    <%= form.text_field :file_id %>
+    <%= form.label :doc_id %>
+    <%= form.text_field :doc_id %>
   </div>
 
   <div class="actions">
