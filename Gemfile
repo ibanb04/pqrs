@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.0'
 #devise
 gem 'materialize-sass', '~> 1.0.0.rc1'
 gem 'material_icons'
-
+gem 'jquery-rails'
 gem 'devise'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
