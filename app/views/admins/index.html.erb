@@ -4,9 +4,13 @@
 <ul id="dropdown1" class="dropdown-content">
         <li><a href="#!">Agregar Rol</a></li>
         <li class="divider"></li>
-        <li><a href="#!">two</a></li>
+        <li>
+            <%= link_to "Agregar Departamento", new_department_path %>
+        </li>
         <li class="divider"></li>
-        <li><a href="#!">three</a></li>
+        <li> 
+                <%= link_to "Sign up", new_registration_path(resource_name) %>
+        </li>
       </ul>
       <nav>
         <div class="nav-wrapper">
