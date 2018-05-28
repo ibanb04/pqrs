@@ -3,3 +3,10 @@
 <%= render 'form', pqr_tracking: @pqr_tracking %>
 
 <%= link_to 'Back', pqr_trackings_path %>
+
+<script>
+$(document).ready(function(){
+    $('select').formSelect();
+
+  });
+</script>

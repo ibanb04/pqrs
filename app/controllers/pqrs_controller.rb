@@ -69,6 +69,6 @@ class PqrsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pqr_params
-      params.require(:pqr).permit(:first_name, :last_name, :email, :title, :subject, :description, :date, :response_date, :file_id)
+      params.require(:pqr).permit(:first_name, :last_name, :email, :title, :subject, :description, :date, :response_date, :doc_id)
     end
 end
