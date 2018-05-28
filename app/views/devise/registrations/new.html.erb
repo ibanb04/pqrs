@@ -39,19 +39,21 @@
  </div>
 
  <div class="row">
-
+      
     <div class="input-field col s12">
+    <%= f.label :department_id %><br/><br/>
     <%= f.select "department_id", Department.all.collect {|x| [x.name, x.id]},{}, class: "multiple"%>
     </div>
     <div class="input-field col s12">
+       <%= f.label :role_id %><br/><br/>
       <%= f.select "role_id", Role.all.collect {|x| [x.name, x.id]},{}, class: "multiple"%>
       </div>
 
  </div>    
  <div class="row">
-    <div class="input-field col s12 l7 ">
-        <%= f.label :birthday %><br/>
-        <%= f.date_field :birthday, autofocus: true %>
+    <div class="input-field col s12 l12 ">
+      <%= f.label :birthday %><br/>
+      <%= f.text_field :birthday,class:'datepicker' %>
     </div>
  </div>
     <div class="input-field">
@@ -88,3 +90,14 @@
     </div>
 </div>
 </section>
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+  });
+  $(document).ready(function(){
+    $('select').formSelect();
+      $('.datepicker').datepicker();
+  });
+</script>

@@ -25,7 +25,19 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    
+    nav {
+
+        ul{
+           height: 100%;
+            li{
+                height: 100%;
+                a{
+                  height: 100%;
+                }
+            }
+        }
+    }
+
     footer {
         position: relative;
         bottom: 0;

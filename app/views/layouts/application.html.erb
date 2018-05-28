@@ -10,24 +10,19 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-     <!-- Dropdown Structure -->
-      <ul id="dropdown1" class="dropdown-content">
-        
-      </ul>
       <nav>
-        <div class="nav-wrapper blue">          
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
-            <li><a href="#"><%= current_user.first_name %></a></li>
-          </ul>
-        </div>
-      </nav>     
-    <% end %> 
-
-    </header>
-    
+      <div class="nav-wrapper blue ">
+       <ul class="right hide-on-med-and-down">
+       <% if user_signed_in? %>
+         <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
+         <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
+       <% else %>
+         <li><%= link_to "Registrarse", new_user_registration_path,class:'valign-wrapper' %></li>
+         <li><%= link_to "Iniciar Sesion", new_user_session_path,class:'valign-wrapper' %></li>
+       <% end %>
+       </ul>
+      </div>
+    </nav>
     <main>
         
     <div class="container">
