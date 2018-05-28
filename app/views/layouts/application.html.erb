@@ -10,23 +10,7 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-     <!-- Dropdown Structure -->
-      <ul id="dropdown1" class="dropdown-content">
-        
-      </ul>
-      <nav>
-        <div class="nav-wrapper blue">          
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
-            <li><a href="#"><%= current_user.first_name %></a></li>
-          </ul>
-        </div>
-      </nav>     
-    <% end %> 
 
-    </header>
     
     <main>
         

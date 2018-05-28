@@ -1,19 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pqrs</h1>
+<h1 class="center">PQRS</h1>
 
-<table>
+<table class="striped">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Title</th>
-      <th>Subject</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Response date</th>
-      <th>Doc</th>
+      <th class="center">First name</th>
+      <th class="center">Last name</th>
+      <th class="center">Email</th>
+      <th class="center">Title</th>
+      <th class="center">Subject</th>
+      <th class="center">Description</th>
+      <th class="center">Date</th>
+      <th class="center">Response date</th>
+      <th class="center">Doc</th>
+      <th class="center">Editar</th>
+      <th class="center">Eliminar</th>
+
+      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,23 +25,23 @@
   <tbody>
     <% @pqrs.each do |pqr| %>
       <tr>
-        <td><%= pqr.first_name %></td>
-        <td><%= pqr.last_name %></td>
-        <td><%= pqr.email %></td>
-        <td><%= pqr.title %></td>
-        <td><%= pqr.subject %></td>
-        <td><%= pqr.description %></td>
-        <td><%= pqr.date %></td>
-        <td><%= pqr.response_date %></td>
-        <td><%= pqr.doc.url %></td>
-        <td><%= link_to 'Show', pqr %></td>
-        <td><%= link_to 'Edit', edit_pqr_path(pqr) %></td>
-        <td><%= link_to 'Destroy', pqr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="center"><%= pqr.first_name %></td>
+        <td class="center"><%= pqr.last_name %></td>
+        <td class="center"><%= pqr.email %></td>
+        <td class="center"><%= pqr.title %></td>
+        <td class="center"><%= pqr.subject %></td>
+        <td class="center"><%= pqr.description %></td>
+        <td class="center"><%= pqr.date %></td>
+        <td class="center"><%= pqr.response_date %></td>
+        <td class="center"><%= pqr.doc.url %></td>
+        <td class="center"><%= link_to 'Editar', edit_pqr_path(pqr), class: 'waves-effect waves-light btn green' %></td>
+        <td class="center"><%= link_to 'Eliminar', pqr, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn red' %></td>
       </tr>
     <% end %>
+    <%= link_to 'Nuevo Pqr', new_pqr_path, class: 'waves-effect waves-light btn cyan'%>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Pqr', new_pqr_path %>
+
