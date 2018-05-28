@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+  
 <h1 class="center">Roles</h1>
+ <%= link_to 'Nuevo', new_role_path, class: 'waves-effect waves-light btn cyan' %>
+<div class="card">
 
 <table class="striped">
   <thead>
@@ -19,14 +21,15 @@
         <td class="center"><%= role.name %></td>
         <td class="center"><%= role.description %></td>
 
-        <td class="center"><%= link_to 'Editar', edit_role_path(role), class: 'waves-effect waves-light btn green' %></td>
-        <td class="center"><%= link_to 'Eliminar', role, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn red' %></td>
+        <td class="center"><%= link_to 'Editar', edit_role_path(role), class: 'waves-effect waves-light btn green',:style => "color: white !important;"  %></td>
+        <td class="center"><%= link_to 'Eliminar', role, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn red',:style => "color: white !important;"  %></td>
       </tr>
     <% end %>
-    <%= link_to 'Nuevo', new_role_path, class: 'waves-effect waves-light btn cyan' %>
+   
   </tbody>
 </table>
 
 <br>
+</div>
 
 

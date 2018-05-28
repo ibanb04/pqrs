@@ -26,12 +26,13 @@ body {
     min-height: 100vh;
     flex-direction: column;
     nav {
-
+            background-color: #000080!important;
         ul{
            height: 100%;
             li{
                 height: 100%;
                 a{
+                  color:white !important;
                   height: 100%;
                 }
             }
@@ -39,6 +40,7 @@ body {
     }
 
     footer {
+        background-color: #002366 !important;
         position: relative;
         bottom: 0;
         right: 0;

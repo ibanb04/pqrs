@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="center">PQRS</h1>
-
+    <%= link_to 'Nuevo Pqr', new_pqr_path, class: 'waves-effect waves-light btn cyan'%>
+<div class="card">
+  
 <table class="striped">
   <thead>
     <tr>
@@ -33,15 +35,15 @@
         <td class="center"><%= pqr.description %></td>
         <td class="center"><%= pqr.date %></td>
         <td class="center"><%= pqr.response_date %></td>
-        <td class="center"><%= pqr.doc.url %></td>
-        <td class="center"><%= link_to 'Editar', edit_pqr_path(pqr), class: 'waves-effect waves-light btn green' %></td>
-        <td class="center"><%= link_to 'Eliminar', pqr, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn red' %></td>
+        <td class="center"><%= pqr.doc %></td>
+        <td class="center"><%= link_to 'Editar', edit_pqr_path(pqr), class: 'waves-effect waves-light btn green',:style => "color: white !important;" %></td>
+        <td class="center"><%= link_to 'Eliminar', pqr, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn red',:style => "color: white !important;" %></td>
       </tr>
     <% end %>
-    <%= link_to 'Nuevo Pqr', new_pqr_path, class: 'waves-effect waves-light btn cyan'%>
   </tbody>
 </table>
 
 <br>
+</div>
 
 
