@@ -71,4 +71,6 @@ class DocsController < ApplicationController
     def doc_params
       params.require(:doc).permit(:url)
     end
+
+    
 end
