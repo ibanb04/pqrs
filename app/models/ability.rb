@@ -14,7 +14,7 @@ class Ability
          can :read, PqrTracking
        elsif user.role.name == 'Esclavo'
          can :create, PqrTracking
-         can :read, PqrTracking  
+         can :read, PqrTracking
        end
      else
        can :read, Department
