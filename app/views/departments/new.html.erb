@@ -1,5 +1,9 @@
-<h1>New Department</h1>
+<% if can? :create, Department%>
+	<h1>New Department</h1>
 
-<%= render 'form', department: @department %>
+	<%= render 'form', department: @department %>
 
-<%= link_to 'Back', departments_path %>
+	<%= link_to 'Back', departments_path %>
+<% else %>
+	redirect_to  new_user_session_path
+<% end %>
