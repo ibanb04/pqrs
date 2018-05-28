@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Statuses</h1>
+<h1 class="center">Statuses</h1>
 
-<table>
+<table class="striped">
   <thead>
     <tr>
-      <th>Status description</th>
+      <th class="center">Status description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,15 +13,15 @@
   <tbody>
     <% @statuses.each do |status| %>
       <tr>
-        <td><%= status.status_description %></td>
-        <td><%= link_to 'Show', status %></td>
-        <td><%= link_to 'Edit', edit_status_path(status) %></td>
-        <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="center"><%= status.status_description %></td>
+        <td class="center"><%= link_to 'Editar', edit_status_path(status), class: 'waves-effect waves-light btn green' %></td>
+        <td class="center"><%= link_to 'Eliminar', status, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-light btn red' %></td>
       </tr>
     <% end %>
+    <%= link_to 'New Status', new_status_path, class: 'waves-effect waves-light btn cyan' %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Status', new_status_path %>
+

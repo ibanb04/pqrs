@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Usuarios</h1>
+<h1 class="center">Usuarios</h1>
 
-<table>
+<table class="striped">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Nombres</th>
-      <th>Apellidos</th>
-      <th>Email</th>
-      <th>Telefono</th>
-      <th>Fecha de nacimiento</th>
-      <th>Rol</th>
-      <th>Departamento</th>
+      <th class="center">Id</th>
+      <th class="center">Nombres</th>
+      <th class="center">Apellidos</th>
+      <th class="center">Email</th>
+      <th class="center">Telefono</th>
+      <th class="center">Fecha de nacimiento</th>
+      <th class="center">Rol</th>
+      <th class="center">Departamento</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,14 +20,14 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.birthday %></td>
-        <td><%= user.role.name %></td>
-        <td><%= user.department.name %></td>
+        <td class="center"><%= user.id %></td>
+        <td class="center"><%= user.first_name %></td>
+        <td class="center"><%= user.last_name %></td>
+        <td class="center"><%= user.email %></td>
+        <td class="center"><%= user.phone %></td>
+        <td class="center"><%= user.birthday %></td>
+        <td class="center"><%= user.role.name %></td>
+        <td class="center"><%= user.department.name %></td>
       </tr>
     <% end %>
   </tbody>

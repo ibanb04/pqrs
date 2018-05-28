@@ -29,7 +29,7 @@ class PermissionRolesController < ApplicationController
     respond_to do |format|
       if @permission_role.save
         format.html { redirect_to @permission_role, notice: 'Permission role was successfully created.' }
-        format.json { render :show, status: :created, location: @permission_role }
+        format.json { render :edit, status: :created, location: @permission_role }
       else
         format.html { render :new }
         format.json { render json: @permission_role.errors, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class PermissionRolesController < ApplicationController
     respond_to do |format|
       if @permission_role.update(permission_role_params)
         format.html { redirect_to @permission_role, notice: 'Permission role was successfully updated.' }
-        format.json { render :show, status: :ok, location: @permission_role }
+        format.json { render :new, status: :ok, location: @permission_role }
       else
         format.html { render :edit }
         format.json { render json: @permission_role.errors, status: :unprocessable_entity }
