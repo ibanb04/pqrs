@@ -1,6 +1,12 @@
+<% if can? :update, Doc%>
 <h1>Editing Doc</h1>
 
 <%= render 'form', doc: @doc %>
 
 <%= link_to 'Show', @doc %> |
 <%= link_to 'Back', docs_path %>
+<% else %>
+<script type="text/javascript">
+    window.location.href="/"
+</script>
+<% end %>

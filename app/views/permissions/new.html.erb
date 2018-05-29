@@ -1,5 +1,11 @@
+ <% if can? :create, Permission%>
 <h1>New Permission</h1>
 
 <%= render 'form', permission: @permission %>
 
 <%= link_to 'Back', permissions_path %>
+<% else %>
+<script type="text/javascript">
+    window.location.href="/"
+</script>
+<% end %> 

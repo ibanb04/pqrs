@@ -4,24 +4,155 @@ class Ability
    def initialize(user)
      # Define abilities for the passed in user here. For example:
      if !user.nil?
-       if user.role.name == 'Director'
-         can :create, PqrTracking
-         can :create, Department
-         can :create, Pqr
-         can :read, Pqr
-       elsif user.role.name == 'Admin'
-         can :manage, :all
-       elsif user.role.name == 'Lider'
-         can :create, PqrTracking
-         can :read, PqrTracking
-       elsif user.role.name == 'Esclavo'
-         can :create, PqrTracking
-         can :read, PqrTracking
-       end
-     else
-       can :create, Pqr
-       
-     end
+      if user.role.name == 'Director'
+        #PQR
+        can :create, Pqr
+        cannot :update, Pqr
+        cannot :destroy, Pqr
+        can :read, Pqr
+        #DEPARTMENT
+        cannot :create, Department
+        cannot :update, Department
+        cannot :destroy, Department
+        can :read, Department
+        #Doc
+        cannot :create, Doc
+        cannot :update, Doc
+        cannot :destroy, Doc
+        can :read, Doc
+        #PQRTRACKINGS
+        can :create, PqrTracking
+        cannot :update, PqrTracking
+        cannot :destroy, PqrTracking
+        can :read, PqrTracking
+        #ROLES
+        cannot :create, Role
+        cannot :update, Role
+        cannot :destroy, Role
+        can :read, Role
+        #STATUSES
+        cannot :create, Status
+        cannot :update, Status
+        cannot :destroy, Status
+        can :read, Status
+        #USERS
+        cannot :create, User
+        can :update, User
+        can :destroy, User
+        can :read, User
+      elsif user.role.name == 'Admin'
+        can :manage, :all
+      elsif user.role.name == 'Esclavo'
+        #PQR
+        can :create, Pqr
+        cannot :update, Pqr
+        cannot :destroy, Pqr
+        cannot :read, Pqr
+        #DEPARTMENT
+        cannot :create, Department
+        cannot :update, Department
+        cannot :destroy, Department
+        cannot :read, Department
+        #Doc
+        cannot :create, Doc
+        cannot :update, Doc
+        cannot :destroy, Doc
+        cannot :read, Doc
+        #PQRTRACKINGS
+        can :create, PqrTracking
+        cannot :update, PqrTracking
+        cannot :destroy, PqrTracking
+        cannot :read, PqrTracking
+        #ROLES
+        cannot :create, Role
+        cannot :update, Role
+        cannot :destroy, Role
+        cannot :read, Role
+        #STATUSES
+        cannot :create, Status
+        cannot :update, Status
+        cannot :destroy, Status
+        cannot :read, Status
+        #USERS
+        cannot :create, User
+        can :update, User
+        can :destroy, User
+        can :read, User
+      elsif user.role.name == 'Lider'
+        #PQR
+        can :create, Pqr
+        cannot :update, Pqr
+        cannot :destroy, Pqr
+        can :read, Pqr
+        #DEPARTMENT
+        cannot :create, Department
+        cannot :update, Department
+        cannot :destroy, Department
+        can :read, Department
+        #Doc
+        can :create, Doc
+        cannot :update, Doc
+        cannot :destroy, Doc
+        can :read, Doc
+        #PQRTRACKINGS
+        can :create, PqrTracking
+        cannot :update, PqrTracking
+        cannot :destroy, PqrTracking
+        can :read, PqrTracking
+        #ROLES
+        cannot :create, Role
+        cannot :update, Role
+        cannot :destroy, Role
+        can :read, Role
+        #STATUSES
+        cannot :create, Status
+        cannot :update, Status
+        cannot :destroy, Status
+        can :read, Status
+        #USERS
+        cannot :create, User
+        can :update, User
+        can :destroy, User
+        can :read, User
+      end
+    else
+        #PQR
+        can :create, Pqr
+        cannot :update, Pqr
+        cannot :destroy, Pqr
+        cannot :read, Pqr
+        #DEPARTMENT
+        cannot :create, Department
+        cannot :update, Department
+        cannot :destroy, Department
+        cannot :read, Department
+        #Doc
+        cannot :create, Doc
+        cannot :update, Doc
+        cannot :destroy, Doc
+        cannot :read, Doc
+        #PQRTRACKINGS
+        cannot :create, PqrTracking
+        cannot :update, PqrTracking
+        cannot :destroy, PqrTracking
+        can :read, PqrTracking
+        #ROLES
+        cannot :create, Role
+        cannot :update, Role
+        cannot :destroy, Role
+        cannot :read, Role
+        #STATUSES
+        cannot :create, Status
+        cannot :update, Status
+        cannot :destroy, Status
+        cannot :read, Status
+        #USERS
+        can :create, User
+        cannot :update, User
+        cannot :destroy, User
+        cannot :read, User
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

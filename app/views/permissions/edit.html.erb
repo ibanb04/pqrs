@@ -1,6 +1,12 @@
+<% if can? :update, Permission%>
 <h1>Editing Permission</h1>
 
 <%= render 'form', permission: @permission %>
 
 <%= link_to 'Show', @permission %> |
 <%= link_to 'Back', permissions_path %>
+<% else %>
+<script type="text/javascript">
+    window.location.href="/"
+</script>
+<% end %>

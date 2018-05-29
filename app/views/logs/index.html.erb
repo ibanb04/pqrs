@@ -1,3 +1,4 @@
+<% if can? :read, Log%>
 <p id="notice"><%= notice %></p>
 
 <h1 class="center">Logs</h1>
@@ -31,5 +32,9 @@
 
 <br>
 </div>
-
+<% else %>
+<script type="text/javascript">
+    window.location.href="/"
+</script>
+<% end %>
 

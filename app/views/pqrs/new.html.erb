@@ -4,6 +4,9 @@
 <%= render 'form', pqr: @pqr %>
 
 <%= link_to 'Back', pqrs_path %>
-
+<% else %>
+<script type="text/javascript">
+    window.location.href="/"
+</script>
 <% end %> 
 
