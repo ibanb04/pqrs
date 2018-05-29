@@ -1,9 +1,6 @@
 <% if can? :create, Department%>
 	<h1>New Department</h1>
-
 	<%= render 'form', department: @department %>
-
-	<%= link_to 'Back', departments_path %>
 <% else %>
    <script type="text/javascript">
          window.location.href="/users/sign_in"
