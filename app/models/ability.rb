@@ -6,17 +6,22 @@ class Ability
      if !user.nil?
        if user.role.name == 'Director'
          can :create, PqrTracking
+         can :read, PqrTracking
          can :create, Department
          can :create, Pqr
          can :read, Pqr
        elsif user.role.name == 'Admin'
          can :manage, :all
        elsif user.role.name == 'Lider'
+        can :create, Pqr
+         can :read, Pqr
          can :create, PqrTracking
          can :read, PqrTracking
        elsif user.role.name == 'Esclavo'
          can :create, PqrTracking
-         can :read, PqrTracking  
+         can :read, PqrTracking
+         can :create, Pqr
+         can :read, Pqr  
        end
      else
        can :create, Pqr
