@@ -18,8 +18,21 @@
 
          <li><a class="valign-wrapper" href="/pqr_trackingsDepartment">Mover PQR a otro departamento</a></li>
          <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
+         <ul id="dropdown1" class="dropdown-content">
+                <li><%= link_to 'Pqrs',pqrs_path,class:'valign-wrapper black-text'%></li>
+                <li><%= link_to 'Departamentos',departments_path,class:'valign-wrapper black-text'%></li>
+                <li><%= link_to 'Departamentos',departments_path,class:'valign-wrapper black-text'%></li>
+                <li><%= link_to 'Roles',roles_path,class:'valign-wrapper black-text'%></li>
+                <li><%= link_to 'trackings',pqr_trackings_path,class:'valign-wrapper black-text'%></li>
+                <li><%= link_to 'status',statuses_path,class:'valign-wrapper black-text'%></li>
+                <li><%= link_to 'usuarios',users_path,class:'valign-wrapper black-text'%></li>
+
+          </ul>
+            <li><a class="dropdown-trigger valign-wrapper" href="#!" data-target="dropdown1">&nbsp&nbsp&nbspopciones</a></li>
+
          <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
-       
+          </ul>
+          
          <% elsif user_signed_in? && current_user.role.name == "Director" %>
 
          <li><%= link_to "Asignar Pqr", new_pqr_tracking_path,class:'valign-wrapper'%></li>
@@ -46,6 +59,7 @@
        </ul>
       </div>
     </nav>
+    <script>$(".dropdown-trigger").dropdown();</script>
     <main>
         
     <div class="container">
