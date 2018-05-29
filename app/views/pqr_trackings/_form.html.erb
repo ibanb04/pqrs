@@ -29,7 +29,7 @@
 
   <div class="field hide">
     <%= form.label :dest_user_id, class: 'active' %>
-    <%= form.select "dest_user_id", User.where("role_id = 31").collect {|x| [x.first_name, {value: x.id , value: x.id}] },{}, class: "multiple"%>
+    <%= form.select "dest_user_id", User.where("role_id = 9").collect {|x| [x.first_name, {value: x.id , value: x.id}] },{}, class: "multiple"%>
   </div>
 
  
@@ -44,7 +44,7 @@
     <%= form.select "department_id", Department.all.collect {|x| [x.name, x.id]},{}, class: "multiple"%>
   </div>
 
-  <div class="field">
+  <div class="field" style="display:none;>
     <%= form.label :date %>
     <%= form.datetime_select :date %>
   </div>
@@ -76,7 +76,7 @@ function updateSelect(){
     var departamento = $('#pqr_tracking_department_id').val();
     for(var i=0; i<data.data.length; i++){
     
-      if(data.data[i].department_id == departamento && data.data[i].role_id == 31){
+      if(data.data[i].department_id == departamento && data.data[i].role_id == 9){
         $('#pqr_tracking_dest_user_id').html('');
         $('#pqr_tracking_dest_user_id').append("<option value='"+data.data[i].id+"'>"+data.data[i].first_name+"</option>")  
     
