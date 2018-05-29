@@ -7,7 +7,7 @@ class Ability
        if user.role.name == 'Director'
          can :create, PqrTracking
          can :read, PqrTracking
-         can :create, Department
+         can :update, PqrTracking
          can :create, Pqr
          can :read, Pqr
        elsif user.role.name == 'Admin'
@@ -25,6 +25,8 @@ class Ability
        end
      else
        can :create, Pqr
+       
+       
        
      end
     # Define abilities for the passed in user here. For example:

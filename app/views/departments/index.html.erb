@@ -1,3 +1,4 @@
+<% if can? :read, Department%>
 <p id="notice"><%= notice %></p>
 
 <h1 class="center">Departamentos</h1>
@@ -29,5 +30,7 @@
 
 <br>
 </div>
+
+<% end %>
 
 
