@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 <% if can? :create, Doc%>
+=======
+<% if can? :create, Status%>
+>>>>>>> 61bbf2d3ac62d9811896a6ff0e629d2bfbdc49dd
 <h1>New Doc</h1>
 
 <%= render 'form', doc: @doc %>
 
 <%= link_to 'Back', docs_path %>
+<<<<<<< HEAD
 <% else %>
    <script type="text/javascript">
          window.location.href="/"
    </script>
+=======
+
+>>>>>>> 61bbf2d3ac62d9811896a6ff0e629d2bfbdc49dd
 <% end %>

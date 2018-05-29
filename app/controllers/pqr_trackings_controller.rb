@@ -3,6 +3,11 @@ class PqrTrackingsController < ApplicationController
 
   # GET /pqr_trackings
   # GET /pqr_trackings.json
+  def departmentView
+    @pqr_trackings = PqrTracking.new
+    render 'vistaDepartamentos'
+  end
+  
   def index
     @pqr_trackings = PqrTracking.all
   end

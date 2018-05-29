@@ -3,7 +3,7 @@
   <head>
     <title>Pqrs</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= csp_meta_tag %>                                             
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,13 +13,36 @@
       <nav>
       <div class="nav-wrapper  ">
        <ul class="right hide-on-med-and-down">
-       <% if user_signed_in? %>
+        
+       <% if user_signed_in? && current_user.role.name == "Admin" %>
+
+         <li><a href="/pqr_trackingsDepartment">Mover PQR a otro departamento</a></li>
+         <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
+         <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
+       
+         <% elsif user_signed_in? && current_user.role.name == "Director" %>
+
+         <li><%= link_to "Asignar Pqr", new_pqr_path,class:'valign-wrapper'%></li>
+         <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
+         <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
+
+       <% elsif user_signed_in? && current_user.role.name == "Lider" %>
+
+         <li><%= link_to "Mover Pqr", new_pqr_path,class:'valign-wrapper'%></li>
+         <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
+         <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
+
+       <% elsif user_signed_in? && current_user.role.name == "Esclavo" %>
+
+         <li><%= link_to "Mover Pqr", new_pqr_path,class:'valign-wrapper'%></li>
          <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
          <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
        <% else %>
          <li><%= link_to "Registrarse", new_user_registration_path,class:'valign-wrapper' %></li>
          <li><%= link_to "Iniciar Sesion", new_user_session_path,class:'valign-wrapper' %></li>
        <% end %>
+       
+       
        </ul>
       </div>
     </nav>
