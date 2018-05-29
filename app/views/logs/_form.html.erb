@@ -1,3 +1,5 @@
+<div class="card">
+  <div class="card hoverable" style="background-color: rgba(255,255,255,.15);" id="card-login">
 <%= form_with(model: log, local: true) do |form| %>
   <% if log.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +12,7 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="card-content grey lighten-4">
   <div class="field">
     <%= form.label :action %>
     <%= form.text_field :action %>
@@ -25,8 +27,11 @@
     <%= form.label :table %>
     <%= form.text_field :table %>
   </div>
+  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions  card-action center-align">
+    <%= form.submit "Enviar",class:'btn btn-large waves-effect waves-light blue darken-3 hoverable pulse ',:style => "color: white !important; " %>
   </div>
 <% end %>
+</div>
+</div>  
