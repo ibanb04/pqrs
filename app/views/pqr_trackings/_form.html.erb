@@ -1,4 +1,5 @@
-
+<div class="card">
+  
      <div class="card hoverable" style="background-color: rgba(255,255,255,.15);" id="card-login">
 <%= form_with(model: pqr_tracking, local: true) do |form| %>
   <% if pqr_tracking.errors.any? %>
@@ -13,6 +14,7 @@
     </div>
   <% end %>
   <div class="card-content grey lighten-4">
+    <div class="field">
     <%= form.label :pqr_id, class: 'active' %>
     <% if current_user.role.name == "Director" %>
       <%= form.select "pqr_id", options_for_select(Pqr.find_by_sql('SELECT *,pqrs.id AS pqr_id FROM pqrs LEFT JOIN pqr_trackings ON pqrs.id = pqr_trackings.id WHERE pqr_trackings.id IS NULL').map{|x| [x.title, x.pqr_id]}), class: "multiple"%>
@@ -21,16 +23,16 @@
   </div>
 
   <div class="field hide">
-  %= form.label :actual_user_id, class: 'active' %>
-  <%= form.select "actual_user_id", options_for_select([[current_user.first_name, current_user.id]]), class: "multiple"%>
+    %= form.label :actual_user_id, class: 'active' %>
+    <%= form.select "actual_user_id", options_for_select([[current_user.first_name, current_user.id]]), class: "multiple"%>
   </div>
 
   <div class="field hide">
-  <%= form.label :dest_user_id, class: 'active' %>
-  <%= form.select "dest_user_id", User.where("role_id = 31").collect {|x| [x.first_name, {value: x.id , value: x.id}] },{}, class: "multiple"%>
-</div>
-
+    <%= form.label :dest_user_id, class: 'active' %>
+    <%= form.select "dest_user_id", User.where("role_id = 31").collect {|x| [x.first_name, {value: x.id , value: x.id}] },{}, class: "multiple"%>
   </div>
+
+ 
 
   <div class="field">
     <%= form.label :status_id %>
@@ -62,6 +64,7 @@
   </div>
 <% end %>
   </div>
+</div>
 
 <script>
 $( "#pqr_tracking_department_id" ).change(function() {
