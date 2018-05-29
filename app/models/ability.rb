@@ -6,11 +6,14 @@ class Ability
      if !user.nil?
        if user.role.name == 'User'
          can :create, Department
+         can :create, Pqr
+         can :read, Pqr
        elsif user.role.name == 'Admin'
          can :manage, :all
        end
      else
-       can :read, Department
+       can :create, Pqr
+       
      end
     # Define abilities for the passed in user here. For example:
     #

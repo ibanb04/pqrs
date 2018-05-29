@@ -1,5 +1,9 @@
+<% if can? :create, Pqr%>
 <h1 class="center">Crear PQR</h1>
 
 <%= render 'form', pqr: @pqr %>
 
 <%= link_to 'Back', pqrs_path %>
+
+<% end %> 
+
