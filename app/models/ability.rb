@@ -4,7 +4,6 @@ class Ability
    def initialize(user)
      # Define abilities for the passed in user here. For example:
      if !user.nil?
-<<<<<<< HEAD
       if user.role.name == 'Director'
         #PQR
         can :create, Pqr
@@ -154,33 +153,6 @@ class Ability
         cannot :read, User
     end
 
-=======
-       if user.role.name == 'Director'
-         can :create, PqrTracking
-         can :read, PqrTracking
-         can :update, PqrTracking
-         can :create, Pqr
-         can :read, Pqr
-       elsif user.role.name == 'Admin'
-         can :manage, :all
-       elsif user.role.name == 'Lider'
-        can :create, Pqr
-         can :read, Pqr
-         can :create, PqrTracking
-         can :read, PqrTracking
-       elsif user.role.name == 'Esclavo'
-         can :create, PqrTracking
-         can :read, PqrTracking
-         can :create, Pqr
-         can :read, Pqr  
-       end
-     else
-       can :create, Pqr
-       
-       
-       
-     end
->>>>>>> 61bbf2d3ac62d9811896a6ff0e629d2bfbdc49dd
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
