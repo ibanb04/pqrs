@@ -1,9 +1,14 @@
+ <% if can? :create, Status%>
+
 <h1>New Status</h1>
 
 <%= render 'form', status: @status %>
 
 <%= link_to 'Back', statuses_path %>
-
+<script type="text/javascript">
+    window.location.href="/"
+</script>
+<% end %> 
 <script>
 $(document).ready(function(){
     $('select').formSelect();

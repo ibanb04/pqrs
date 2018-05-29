@@ -1,4 +1,4 @@
-<% if can? :read, PqrTracking%>
+<% if can? :read, PqrTracking %>
 <p id="notice"><%= notice %></p>
 
 <h1 class="center">Pqr Trackings</h1>
@@ -42,10 +42,8 @@
 
 <br>
 </div>
-
 <% else %>
 <script type="text/javascript">
-    window.location.href="/users/sign_up"
+    window.location.href="/"
 </script>
 <% end %>
-

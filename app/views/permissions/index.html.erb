@@ -1,3 +1,4 @@
+<% if can? :read, Permission%>
 <p id="notice"><%= notice %></p>
 
 <h1 class="center">Permisos</h1>
@@ -27,5 +28,11 @@
 
 <br>
 </div>
+<% else %>
+<script type="text/javascript">
+    window.location.href="/"
+</script>
+<% end %>
+
 
 
