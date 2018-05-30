@@ -1,3 +1,5 @@
+<div class="card">
+    <div class="card hoverable" style="background-color: rgba(255,255,255,.15);" id="card-login">
 <%= form_with(model: pqr_tracking, local: true) do |form| %>
   <% if pqr_tracking.errors.any? %>
     <div id="error_explanation">
@@ -10,7 +12,7 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="card-content grey lighten-4">
   <div class="input-field col l12">
     <%= form.label :pqr_id, class: 'active' %>
     <% if current_user.role.name == "Director" %>
@@ -24,12 +26,12 @@
     <%= form.select "actual_user_id", options_for_select([[ current_user.first_name, current_user.id]]), class: "multiple"%>
   </div>
 
-  <div class="input-field col l12 ">
+  <div class="input-field col l12 hide ">
     <%= form.label :dest_user_id, class: 'active' %>
     <%= form.select "dest_user_id", User.all.collect {|x| [x.first_name, {value: x.id , value: x.id}] },{}, class: "multiple"%>
   </div>
 
-  <div class="input-field col l12">
+  <div class="input-field hide col l12">
     <%= form.label :status_id, class: 'active' %>
     <%= form.select "status_id",  Status.all.collect {|x| [x.status_description, x.id]},{}, class: "multiple"%>
   </div>
@@ -53,11 +55,14 @@
     <%= form.label :response, class: 'active' %>
     <%= form.text_field :response %>
   </div>
+  </div>
 
-  <div class="actions">
-    <center><%= form.submit 'Mover PQR', :class => 'btn btn-default' %></center>
+  <div class="actions  card-action center-align">
+    <%= form.submit "Enviar",class:'btn btn-large waves-effect waves-light blue darken-3 hoverable pulse ',:style => "color: white !important; " %>
   </div>
 <% end %>
+</div>
+</div>
 <script>
 var dat = new Date();
 $('#pqr_tracking_date_2i').val(dat.getMonth()+1)
