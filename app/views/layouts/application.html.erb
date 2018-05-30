@@ -41,7 +41,7 @@
 
        <% elsif user_signed_in? && current_user.role.name == "Lider" %>
 
-         <li><%= link_to "Mover Pqr", vistaDepartamentos_pqr_tracking_path,class:'valign-wrapper'%></li>
+         <li><%= link_to "Mover Pqr", pqr_trackingsDepartment_path,class:'valign-wrapper'%></li>
          <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
          <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
 

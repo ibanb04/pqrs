@@ -1,16 +1,6 @@
 <center> <h4>Mover PQR a otro departamento</h4> </center>
-<%= form_with(model: pqr_tracking, local: true) do |form| %>
-    <% if pqr_tracking.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(pqr_tracking.errors.count, "error") %> prohibited this pqr_tracking from being saved:</h2>
-  
-        <ul>
-        <% pqr_tracking.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+
+<%= form_for @pqr_trackings, :html => {:style => "width: 100%;"} do |form| %>
   
     <div class="input-field col l12">
       <%= form.label :pqr_id, class: 'active' %>
