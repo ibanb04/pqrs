@@ -1,0 +1,88 @@
+<center> <h4>Mover PQR a otro departamento</h4> </center>
+<%= form_with(model: pqr_tracking, local: true) do |form| %>
+    <% if pqr_tracking.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(pqr_tracking.errors.count, "error") %> prohibited this pqr_tracking from being saved:</h2>
+  
+        <ul>
+        <% pqr_tracking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="input-field col l12">
+      <%= form.label :pqr_id, class: 'active' %>
+      <% if current_user.role.name == "Director" %>
+        <%= form.select "pqr_id", options_for_select(Pqr.find_by_sql('SELECT *,pqrs.id AS pqr_id FROM pqrs LEFT JOIN pqr_trackings ON pqrs.id = pqr_trackings.id WHERE pqr_trackings.id IS NULL').map{|x| [x.title, x.pqr_id]}), class: "multiple"%>
+      <% else %>
+      <% end %>
+    </div>
+  
+    <div class="input-field col l12 hide">
+      <%= form.label :actual_user_id, class: 'active' %>
+      <%= form.select "actual_user_id", options_for_select([[ current_user.first_name, current_user.id]]), class: "multiple"%>
+    </div>
+  
+    <div class="input-field col l12 ">
+      <%= form.label :dest_user_id, class: 'active' %>
+      <%= form.select "dest_user_id", User.all.collect {|x| [x.first_name, {value: x.id , value: x.id}] },{}, class: "multiple"%>
+    </div>
+  
+    <div class="input-field col l12">
+      <%= form.label :status_id, class: 'active' %>
+      <%= form.select "status_id",  Status.all.collect {|x| [x.status_description, x.id]},{}, class: "multiple"%>
+    </div>
+  
+    <div class="input-field col l12">
+      <%= form.label :department_id, class: 'active' %>
+      <%= form.select "department_id", Department.all.collect {|x| [x.name, x.id]},{}, class: "multiple"%>
+    </div>
+  
+    <div class="input-field col l12 hide">
+      <%= form.label :date, class: 'active' %>
+      <%= form.datetime_select :date %>
+    </div>
+  
+    <div class="input-field col l12">
+      <%= form.label :review, class: 'active' %>
+      <%= form.text_field :review %>
+    </div>
+  
+    <div class="input-field col l12">
+      <%= form.label :response, class: 'active' %>
+      <%= form.text_field :response %>
+    </div>
+  
+    <div class="actions">
+      <center><%= form.submit 'Mover PQR', :class => 'btn btn-default' %></center>
+    </div>
+  <% end %>
+  <script>
+  var dat = new Date();
+  $('#pqr_tracking_date_2i').val(dat.getMonth()+1)
+  $('#pqr_tracking_date_3i').val(dat.getDate())
+  $('#pqr_tracking_date_4i').val(dat.getHours())
+  $('#pqr_tracking_date_5i').val(dat.getMinutes())
+  $( "#pqr_tracking_department_id" ).change(function() {
+    updateSelect();
+  });
+  function updateSelect(){
+  
+    $.getJSON( "/users_json", function( data ) {
+      console.log(data.data);
+      var departamento = $('#pqr_tracking_department_id').val();
+      for(var i=0; i<data.data.length; i++){
+      
+        if(data.data[i].department_id == departamento && data.data[i].role_id == 3){
+  
+          $('#pqr_tracking_dest_user_id').html('');
+          $('#pqr_tracking_dest_user_id').append("<option value='"+data.data[i].id+"'>"+data.data[i].first_name+"</option>")  
+      
+        }
+      }
+    });
+  }
+  updateSelect();
+  </script>
