@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   resources :pqrs
   resources :docs
   devise_for :users
-  get 'home/index'
+  get 'home/index' 
   resources :departments
   resources :permission_roles
   resources :roles
   resources :permissions
   resources :users
-  resources :admins
-  
+  resources :admins  
+  get '/users_json', to: 'users_json#metodo'  
   get '/pqr_trackingsDepartment', to: 'pqr_trackings#departmentView'
 
   root to: "home#index"

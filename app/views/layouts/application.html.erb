@@ -28,7 +28,7 @@
                 <li><%= link_to 'usuarios',users_path,class:'valign-wrapper black-text'%></li>
 
           </ul>
-            <li><a class="dropdown-trigger valign-wrapper" href="#!" data-target="dropdown1">&nbsp&nbsp&nbspopciones</a></li>
+            <li><a class="dropdown-trigger valign-wrapper" href="#!" data-target="dropdown1">&nbsp&nbsp&nbsp opciones</a></li>
 
          <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
           </ul>
@@ -41,7 +41,7 @@
 
        <% elsif user_signed_in? && current_user.role.name == "Lider" %>
 
-         <li><%= link_to "Mover Pqr", new_pqr_path,class:'valign-wrapper'%></li>
+         <li><%= link_to "Mover Pqr", new_pqr_tracking_path,class:'valign-wrapper'%></li>
          <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
          <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
 
@@ -59,7 +59,11 @@
        </ul>
       </div>
     </nav>
-    <script>$(".dropdown-trigger").dropdown();</script>
+    <script>
+          $( document ).ready(function() {
+            $(".dropdown-trigger").dropdown();
+          });
+  </script>
     <main>
         
     <div class="container">
