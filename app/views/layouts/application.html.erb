@@ -34,7 +34,7 @@
           </ul>
           
          <% elsif user_signed_in? && current_user.role.name == "Director" %>
-
+          <li><%= link_to "Editar cuenta", new_pqr_tracking_path,class:'valign-wrapper'%></li>
          <li><%= link_to "Asignar Pqr", new_pqr_tracking_path,class:'valign-wrapper'%></li>
          <li><%= link_to current_user.email,root_path,class:'valign-wrapper'%></li>
          <li><%= link_to "salir", destroy_user_session_path, method: :delete,class:'valign-wrapper' %></li>
